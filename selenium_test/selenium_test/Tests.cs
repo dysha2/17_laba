@@ -93,6 +93,52 @@ namespace selenium_test
                 }
             }
         }
+        [TestCase]
+        public void Calc_MonthlyPayment()
+        {
+            webDriver.Url = "https://calcus.ru/kalkulyator-ipoteki";
+            if (IsLoaded("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[2]/div[1]/input"))
+            {
+                IWebElement fullPrice = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[2]/div[1]/input"));
+                fullPrice.SendKeys("1000");
+                IWebElement payedPrice = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[3]/div[2]/div[1]/input"));
+                payedPrice.SendKeys("100");
+                IWebElement termCredit = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[6]/div[2]/div[1]/input"));
+                termCredit.SendKeys("3");
+                IWebElement percents = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[8]/div[2]/div[1]/input"));
+                percents.SendKeys("10");
+                IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[10]/div/input"));
+                button.Click();
+                if (IsLoaded("/html/body/div[1]/div[2]/div[1]/form/div[14]/div[1]/div[5]/div[2]/div"))
+                {
+                    IWebElement DutyAndPercents = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[14]/div[1]/div[1]/div[2]/div"));
+                    Assert.AreEqual(DutyAndPercents.Text, "29,04");
+                }
+            }
+        }
+        [TestCase]
+        public void Calc_InterestCharges()
+        {
+            webDriver.Url = "https://calcus.ru/kalkulyator-ipoteki";
+            if (IsLoaded("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[2]/div[1]/input"))
+            {
+                IWebElement fullPrice = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[2]/div[1]/input"));
+                fullPrice.SendKeys("1000");
+                IWebElement payedPrice = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[3]/div[2]/div[1]/input"));
+                payedPrice.SendKeys("100");
+                IWebElement termCredit = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[6]/div[2]/div[1]/input"));
+                termCredit.SendKeys("3");
+                IWebElement percents = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[8]/div[2]/div[1]/input"));
+                percents.SendKeys("10");
+                IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[10]/div/input"));
+                button.Click();
+                if (IsLoaded("/html/body/div[1]/div[2]/div[1]/form/div[14]/div[1]/div[5]/div[2]/div"))
+                {
+                    IWebElement DutyAndPercents = webDriver.FindElement(By.XPath("//html/body/div[1]/div[2]/div[1]/form/div[14]/div[1]/div[4]/div[2]/div"));
+                    Assert.AreEqual(DutyAndPercents.Text, "145,44");
+                }
+            }
+        }
         public bool IsLoaded(string XPath)
         {
             WebDriverWait wait = new WebDriverWait(webDriver, new TimeSpan(0, 0, 30));

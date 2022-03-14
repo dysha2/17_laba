@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "21762c17-7771-4586-8ce3-b4d2e11ed0c4": {
+      "ProjectGuid": "21762c17-7771-4586-8ce3-b4d2e11ed0c4",
+      "DisplayName": "selenium_test",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
